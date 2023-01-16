@@ -1,44 +1,53 @@
-import NextLink from "next/link";
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+// @generated: @expo/next-adapter@2.1.52
+import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import App from "../src/App";
+import { Button, TextInput } from "react-native-paper";
 
-export default function IndexPage() {
-  return <Text>Yeah! I love men</Text>;
+export class Apper extends React.Component<
+  {},
+  { currentText: string; todos: string[] }
+> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentText: "",
+      todos: [],
+    };
+  }
+
+  render(): React.ReactNode {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>{this.state.currentText}👋</Text>
+        <Button
+          onPress={() => {
+            alert("Yeeberg");
+          }}
+          mode="outlined"
+        >
+          Add Todo
+        </Button>
+
+        <TextInput
+          label="todo"
+          value={this.state.currentText}
+          onChangeText={(text) => this.setState({ currentText: text })}
+        />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-  app: {
-    marginHorizontal: "auto",
-    maxWidth: 500,
-    padding: 20,
-  },
-  logo: {
-    height: 80,
-  },
-  header: {
-    padding: 20,
-  },
-  title: {
-    fontWeight: "bold",
-    fontSize: "1.5rem",
-    marginTop: "1em",
-    textAlign: "center",
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
-    lineHeight: "1.5em",
-    fontSize: "1.125rem",
-    marginVertical: "1em",
-    textAlign: "center",
-  },
-  link: {
-    color: "#1977f2",
-  },
-  listitem: {
-    marginVertical: "0.5rem",
-    textAlign: "center",
-  },
-  pageLink: {
-    fontSize: "1.25rem",
-    fontWeight: "bold",
+    fontSize: 16,
   },
 });
+
+export default App;
